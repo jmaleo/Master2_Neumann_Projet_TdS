@@ -12,6 +12,7 @@ build/
 develop-eggs/
 dist/
 downloads/
+img_align_celeba/
 eggs/
 .eggs/
 lib/
