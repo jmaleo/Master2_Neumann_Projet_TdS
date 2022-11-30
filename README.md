@@ -1,6 +1,6 @@
 # Neumann
 
-This repository provides evaluation functions for the following repository : https://github.com/dgilton iterative_reconstruction_networks
+This repository provides evaluation functions for the following repository : https://github.com/dgilton/iterative_reconstruction_networks
 
 ## Data 
 
