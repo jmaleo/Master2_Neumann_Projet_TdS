@@ -91,9 +91,15 @@ class FolderDataset(Dataset):
 class CelebaDataset(Dataset):
     def __init__(self, target_directory, validation_data=False, transform=None):
         filelist = directory_filelist(target_directory)
-        training_data = filelist[:162770]
-        val_data = filelist[162770:182638]
-        test_data = filelist[182638:]
+        num_training = 4 * len(filelist) / 6
+        num_testing = 5 * len(filelist) / 6
+        # training_data = filelist[:162770]
+        # val_data = filelist[162770:182638]
+        # test_data = filelist[182638:]
+        training_data = filelist[:num_training]
+        val_data = filelist[num_training:num_testing]
+        test_data = filelist[num_testing:]
+
         if validation_data:
             self.full_filelist = [target_directory + single_file for single_file in val_data]
         else:
@@ -114,7 +120,16 @@ class CelebaDataset(Dataset):
 class CelebaTrainingDatasetSubset(Dataset):
     def __init__(self, target_directory, subset_indices, transform=None):
         filelist = directory_filelist(target_directory)
-        training_data = filelist[:162770]
+
+        print ("Taille du jeu de données : {}".format(len(filelist)))
+
+        num_training = 4 * int(len(filelist) / 6)
+
+        print ("Jusqu'à ou que l'on prend ? {}".format(num_training))
+
+        # training_data = filelist[:162770]
+        training_data = filelist[:num_training]
+
         try:
             training_data = [training_data[x] for x in subset_indices]
         except TypeError:
@@ -138,9 +153,15 @@ class CelebaTrainingDatasetSubset(Dataset):
 class CelebaTestDataset(Dataset):
     def __init__(self, target_directory, transform=None):
         filelist = directory_filelist(target_directory)
-        training_data = filelist[:162770]
-        val_data = filelist[162770:182638]
-        test_data = filelist[182638:]
+        num_training = 4 * int(len(filelist) / 6)
+        num_testing = 5 * int(len(filelist) / 6)
+        # training_data = filelist[:162770]
+        # val_data = filelist[162770:182638]
+        # test_data = filelist[182638:]
+        training_data = filelist[:num_training]
+        val_data = filelist[num_training:num_testing]
+        test_data = filelist[num_testing:]
+
         self.full_filelist = [target_directory + single_file for single_file in test_data]
         self.transform = transform
 

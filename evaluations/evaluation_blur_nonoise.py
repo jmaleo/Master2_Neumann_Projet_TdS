@@ -2,7 +2,7 @@ import torch
 import os
 import random
 import sys
-sys.path.append('/home/arnal/Documents/Master2/Traitement du signal/iterative_reconstruction_networks/')
+sys.path.append('/home/arnal/Documents/Master2/Traitement du signal/Neumann/')
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
@@ -33,7 +33,8 @@ initial_eta = 0.0
 
 initial_data_points = 10000
 # point this towards your celeba files
-data_location = "img_align_celeba/"
+# data_location = "data/img_align_celeba/"
+data_location = "data/Malignant/"
 data_out_location = "evaluations/blur_nonoise_data/"
 kernel_size = 5
 noise_sigma = 0.01

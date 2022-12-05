@@ -8,7 +8,7 @@ You need to have the CelebA dataset.
 You can have it by going into this link : https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ
 and downloading the zip folder, named img_align_celeba.zip.
 
-You'll need to put it into your Neumann directory as "img_align_celeba".
+You'll need to put it into your Neumann directory as "data/img_align_celeba".
 
 ## How to use 
 

@@ -2,7 +2,7 @@ import torch
 import os
 import random
 import sys
-sys.path.append('/home/arnal/Documents/Master2/Traitement du signal/iterative_reconstruction_networks/')
+sys.path.append('/home/arnal/Documents/Master2/Traitement du signal/Neumann/')
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
@@ -28,13 +28,14 @@ initial_eta = 0.6
 
 initial_data_points = 10000
 # point this towards your celeba files
-data_location = "img_align_celeba/"
+# data_location = "data/img_align_celeba/"
+data_location = "data/Malignant/"
 
 kernel_size = 5
 noise_sigma = 0.01
 
 # modify this for your machine
-save_location = "result/gaussianblur_precondneumann_2.ckpt"
+save_location = "result/gaussianblur_precondneumann_3.ckpt"
 
 gpu_ids = []
 for ii in range(6):

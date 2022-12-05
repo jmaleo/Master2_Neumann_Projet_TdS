@@ -2,7 +2,7 @@ import torch
 import os
 import random
 import sys
-sys.path.append('/home/arnal/Documents/Master2/Traitement du signal/iterative_reconstruction_networks/')
+sys.path.append('/home/arnal/Documents/Master2/Traitement du signal/Neumann/')
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
@@ -31,9 +31,12 @@ print_every_n_steps = 10
 save_every_n_epochs = 1
 initial_eta = 0.0
 
-initial_data_points = 10000
+initial_data_points = 300
+# initial_data_points = 10000
+
 # point this towards your celeba files
-data_location = "img_align_celeba/"
+# data_location = "data/img_align_celeba/"
+data_location = "data/Malignant/"
 data_out_location = "evaluations/blur_data/"
 kernel_size = 5
 noise_sigma = 0.01
@@ -65,15 +68,18 @@ print("GPU IDs: " + str([int(x) for x in gpu_ids]), flush=True)
 # Set up data and dataloaders
 transform = transforms.Compose(
     [
-        transforms.Resize((96, 96)),
+        transforms.Resize((64, 64)),
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ]
 )
 
-celeba_train_size = 13000
+# celeba_train_size = 13000
+tyroid_train_size = 4 * int(492 / 6)
+
 total_data = initial_data_points
-total_indices = random.sample(range(celeba_train_size), k=total_data)
+# total_indices = random.sample(range(celeba_train_size), k=total_data)
+total_indices = random.sample(range(tyroid_train_size), k=total_data)
 initial_indices = total_indices
 
 dataset = CelebaTrainingDatasetSubset(data_location, subset_indices=initial_indices, transform=transform)
