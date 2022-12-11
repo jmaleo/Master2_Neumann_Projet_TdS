@@ -174,3 +174,23 @@ class CelebaTestDataset(Dataset):
         if self.transform is not None:
             data = self.transform(data)
         return data
+
+class CelebaEvalDataset (Dataset) :
+    def __init__(self, target_directory, transform=None):
+        filelist = directory_filelist(target_directory)
+        training_data = []
+        val_data = []
+        test_data = filelist
+
+        self.full_filelist = [target_directory + single_file for single_file in test_data]
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.full_filelist)
+
+    def __getitem__(self, item):
+        image_name = self.full_filelist[item]
+        data = load_img(image_name)
+        if self.transform is not None:
+            data = self.transform(data)
+        return data
